@@ -135,7 +135,7 @@ int gcd(int x, int y){
 }
 
 int publickeygen(int p, int q){
-        int e = ((p-1)*(q-1))-1;
+        int e = 25; //((p-1)*(q-1))-1;
         int i = 0;
         for(i = 0; e >= 1; i++){
                 if(gcd(e,(p-1)*(q-1)) != 1){
@@ -150,15 +150,19 @@ int publickeygen(int p, int q){
 
 int main(){
 	int p = primegen(70);
+	printf("%d\n",p);
 	int q = primegen(50);
+	printf("%d\n",q);
 	int n = p * q;
-	char m = 'A';
+	char m = 'H';
 	int message = (int)m;
 	int e = publickeygen(p,q);
 	int counter = 0;
 	int* result;
 	result = power(message,e,&counter);
+	printf("\n");
 	int cnum = modrev(result,counter,n);
+	printf("%d",cnum);
 	free(result);
 	return 0;
 
