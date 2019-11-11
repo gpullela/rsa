@@ -135,7 +135,7 @@ int gcd(int x, int y){
 }
 
 int publickeygen(int p, int q){
-        int e = 25; //((p-1)*(q-1))-1;
+        int e = ((p-1)*(q-1))-1;
         int i = 0;
         for(i = 0; e >= 1; i++){
                 if(gcd(e,(p-1)*(q-1)) != 1){
@@ -146,6 +146,22 @@ int publickeygen(int p, int q){
                 }
         }
         return e;
+}
+
+int privatekeygen(e,p,q){
+
+	int psub = p-1;
+	int qsub = q-1;
+	int prosub = psub*qsub;
+	int lcm = prosub/gcd(psub,qsub);
+	int d = 1;
+	for(d= 1;d < p*q; d++){
+		int temp = (d*e)%lcm;
+		if(lcm == 1){
+			return d;
+		}
+	}
+
 }
 
 int main(){
@@ -164,6 +180,7 @@ int main(){
 	int cnum = modrev(result,counter,n);
 	printf("%d",cnum);
 	free(result);
+	1
 	return 0;
 
 
