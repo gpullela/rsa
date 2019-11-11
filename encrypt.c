@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <time.h>
 
-#define N 96
+#define MAXCHAR 10000
 
 int isprime(int input){
         if(input == 2){
@@ -69,13 +68,16 @@ int publickeygen(int p, int q){
 
 
 int main(){
-	int p = primegen(50);
-	int q = primegen(30);
+	int p = primegen(6);
+	int q = primegen(4);
 	int n = p*q;
-	int m = 0;
-	printf("enter a message: ");
-	scanf("%d\n",&m);
-	
+	double m = 3;
+	double e =(double)publickeygen(p,q);
+	double out;
+	out = pow(m,e);
+	int outint = (int)out;
+	int ctext = outint%n;
+	printf("%d",ctext);
 
 	return 0;
 
