@@ -149,5 +149,18 @@ int publickeygen(int p, int q){
 }
 
 int main(){
+	int p = primegen(70);
+	int q = primegen(50);
+	int n = p * q;
+	char m = 'A';
+	int message = (int)m;
+	int e = publickeygen(p,q);
+	int counter = 0;
+	int* result;
+	result = power(message,e,&counter);
+	int cnum = modrev(result,counter,n);
+	free(result);
 	return 0;
+
+
 }
