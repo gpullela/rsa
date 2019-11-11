@@ -1,8 +1,7 @@
 // C++ program to compute 
 // factorial of big numbers 
-#include <iostream> 
-using namespace std; 
-  
+#include <stdio.h>
+
 // Maximum number of digits in  
 // output 
 #define MAX 100000 
@@ -51,7 +50,7 @@ void power(int x, int n)
   
 //printing value "1" for power = 0 
 if(n == 0 ){  
-    cout<<"1"; 
+    printf("1"); 
     return; 
 } 
   
@@ -70,10 +69,11 @@ while (temp != 0) {
 // (x^n = x*x*x....n times) 
 for (int i = 2; i <= n; i++) 
     res_size = multiply(x, res, res_size); 
-  
-cout << x << "^" << n << " = "; 
+
+printf("%d ^ %d = ",x,n);
+
 for (int i = res_size - 1; i >= 0; i--) 
-    cout << res[i]; 
+    printf("%d", res[i]); 
 } 
   
 // Driver program 
