@@ -164,6 +164,18 @@ int privatekeygen(e,p,q){
 
 }
 
+
+
+int modInverse(int a, int m)
+{
+    a = a%m;
+    for (int x=1; x<m; x++)
+       if ((a*x) % m == 1)
+          return x;
+}
+
+
+
 int main(){
 	int p = primegen(70);
 	printf("%d\n",p);
@@ -180,7 +192,14 @@ int main(){
 	int cnum = modrev(result,counter,n);
 	printf("%d",cnum);
 	free(result);
-	1
+	int* result2;
+	int counter2 = 0;
+	int tem = (p-1)*(q-1);
+	int d = modInverse(e,tem);
+	result2 = power(cnum,d,&counter2);
+	message = modrev(result2,counter2,n);
+	printf("\n%d",message);
+	free(result2);
 	return 0;
 
 
