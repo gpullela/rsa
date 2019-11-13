@@ -27,7 +27,7 @@ int modrev(int* num, int length, int a)
     return res;
 }
 
-  
+ /* 
 // Driver program 
 int main() 
 { 
@@ -37,4 +37,4 @@ int main()
     int i = modrev(num,14,10); 
     printf("%d",i); 
     return 0; 
-} 
+} */

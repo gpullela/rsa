@@ -4,7 +4,7 @@
 #include <stdlib.h>
 // Maximum number of digits in
 // output
-#define MAX 100000
+#define MA 100000
 
 // This function multiplies x
 // with the number represented by res[].
@@ -47,7 +47,7 @@ return res_size;
 // power of a number x
 int* power(int x, int n, int* counter)
 {
-int* res = malloc(sizeof(int)*MAX); //<-- heap
+int* res = malloc(sizeof(int)*MA); //<-- heap
 //printing value "1" for power = 0
 if(n == 0){
     printf("1");
@@ -83,7 +83,7 @@ return res;
 }
 
 // Driver program
-int main() {
+/*int main() {
 int exponent = 10;
 int base = 2;
 int counter = 0;
@@ -101,4 +101,4 @@ for (int i = counter - 1; i >= 0; i--)
 
 free(result);
 return 0;
-}
+}*/
