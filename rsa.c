@@ -95,6 +95,31 @@ int modInverse(int a, int m)
 
 
 
+int encrypt(int m, int e, int n){
+
+  	int counter = 0;
+        int* result;
+        result = power(m,e,&counter);
+        printf("\n");
+        int cnum = modrev(result,counter,n);
+        printf("CipherText in Int Form: %d\n",cnum);
+        free(result);
+	return cnum;
+
+}
+
+int decrypt(int cnum, int d, int n){
+
+	int* result2;
+        int counter2 = 0;
+        result2 = power(cnum,d,&counter2);
+        int m = modrev(result2,counter2,n);
+        printf("\nMessage Decrypted = %d",(char)m);
+        free(result2);
+	return m;
+}
+
+
 int main(){
 	int p = primegen(70);
 	printf("p = %d\n",p);
@@ -104,6 +129,7 @@ int main(){
 	char m = 'H';
 	int message = (int)m;
 	int e = publickeygen(p,q);
+	/*
 	int counter = 0;
 	int* result;
 	result = power(message,e,&counter);
@@ -111,14 +137,17 @@ int main(){
 	int cnum = modrev(result,counter,n);
 	printf("CipherText in Int Form: %d\n",cnum);
 	free(result);
-	int* result2;
-	int counter2 = 0;
+	*/
+	int cnum = encrypt(message,e,n);
+	/*int* result2;
+	int counter2 = 0;*/
 	int tem = (p-1)*(q-1);
 	int d = modInverse(e,tem);
-	result2 = power(cnum,d,&counter2);
+	/*result2 = power(cnum,d,&counter2);
 	message = modrev(result2,counter2,n);
 	printf("\nMessage Decrypted = %d",(char)message);
-	free(result2);
+	free(result2);*/
+	int tempor = decrypt(cnum,d,n);
 	return 0;
 
 
