@@ -121,14 +121,20 @@ int decrypt(int cnum, int d, int n){
 
 
 int main(){
-	int p = primegen(70);
-	printf("p = %d\n",p);
-	int q = primegen(50);
-	printf("q = %d\n",q);
-	int n = p * q;
-	char m = 'H';
-	int message = (int)m;
-	int e = publickeygen(p,q);
+
+	int input[] = {65,66,67,68,69,70,71,72};
+	int output[8];
+	int i = 0;
+	for(i = 0; i < 8; i++){
+		
+		int p = primegen(70);
+		printf("p = %d\n",p);
+		int q = primegen(50);
+		printf("q = %d\n",q);
+		int n = p * q;
+		char m = 'H';
+		int message = (int)m;
+		int e = publickeygen(p,q);
 	/*
 	int counter = 0;
 	int* result;
@@ -138,7 +144,9 @@ int main(){
 	printf("CipherText in Int Form: %d\n",cnum);
 	free(result);
 	*/
-	int cnum = encrypt(message,e,n);
+		int cnum = encrypt(input[i],e,n);
+		output[i] = cnum;
+	}
 	/*int* result2;
 	int counter2 = 0;*/
 	int tem = (p-1)*(q-1);
