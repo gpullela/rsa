@@ -115,7 +115,7 @@ int decrypt(int cnum, int d, int n){
         int counter2 = 0;
         result2 = power(cnum,d,&counter2);
         int m = modrev(result2,counter2,n);
-        printf("\nMessage Decrypted = %d",(char)m);
+        printf("\nMessage Decrypted = %d",m);
         free(result2);
 	return m;
 }
@@ -156,11 +156,18 @@ int main(){
 	int counter2 = 0;*/
 	int tem = (p-1)*(q-1);
 	int d = modInverse(e,tem);
+	printf("\n\n\n%d",d);	
+
+	for(i =0; i < 8; i++){
 	/*result2 = power(cnum,d,&counter2);
 	message = modrev(result2,counter2,n);
 	printf("\nMessage Decrypted = %d",(char)message);
 	free(result2);*/
-	int tempor = decrypt(cnum,d,n);
+		cnum = output[i];
+		int tempor = decrypt(cnum,d,n);
+		printf("%d",tempor);
+
+	}
 	return 0;
 
 
