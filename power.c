@@ -22,7 +22,8 @@ int carry = 0;
 
 // One by one multiply n with
 // individual digits of res[]
-for (int i = 0; i < res_size; i++) {
+int i;
+for(i = 0; i < res_size; i++) {
     int prod = res[i] * x + carry;
 
     // Store last digit of
@@ -67,7 +68,8 @@ while (temp != 0) {
 
 // Multiply x n times
 // (x^n = x*x*x....n times)
-for (int i = 2; i <= n; i++)
+int i;
+for (i = 2; i <= n; i++)
     res_size = multiply(x, res, res_size);
 
 printf("%d ^ %d = ",x,n);

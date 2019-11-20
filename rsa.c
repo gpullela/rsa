@@ -88,7 +88,8 @@ int privatekeygen(e,p,q){
 int modInverse(int a, int m)
 {
     a = a%m;
-    for (int x=1; x<m; x++)
+	int x;
+    for (x=1; x<m; x++)
        if ((a*x) % m == 1)
           return x;
 }
@@ -125,16 +126,20 @@ int main(){
 	int input[] = {65,66,67,68,69,70,71,72};
 	int output[8];
 	int i = 0;
+	int p,q,n,cnum;
+	char m;
+	int message;
+	int e;
 	for(i = 0; i < 8; i++){
 		
-		int p = primegen(70);
+		p = primegen(70);
 		printf("p = %d\n",p);
-		int q = primegen(50);
+		q = primegen(50);
 		printf("q = %d\n",q);
-		int n = p * q;
-		char m = 'H';
-		int message = (int)m;
-		int e = publickeygen(p,q);
+		n = p * q;
+		m = 'H';
+		message = (int)m;
+		e = publickeygen(p,q);
 	/*
 	int counter = 0;
 	int* result;
@@ -144,7 +149,7 @@ int main(){
 	printf("CipherText in Int Form: %d\n",cnum);
 	free(result);
 	*/
-		int cnum = encrypt(input[i],e,n);
+		cnum = encrypt(input[i],e,n);
 		output[i] = cnum;
 	}
 	/*int* result2;

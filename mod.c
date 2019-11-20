@@ -9,7 +9,8 @@ int mod(int* num, int length, int a)
     int res = 0; 
   
     // One by one process all digits of 'num' 
-    for (int i = 0; i < length; i++) 
+    int i;
+    for (i = 0; i < length; i++) 
          res = (res*10 + num[i]) %a; 
   
     return res; 
@@ -21,7 +22,8 @@ int modrev(int* num, int length, int a)
     int res = 0;
 
     // One by one process all digits of 'num'
-    for (int i = length-1; i >= 0; i--)
+    int i;
+    for (i = length-1; i >= 0; i--)
          res = (res*10 + num[i]) %a;
 
     return res;
