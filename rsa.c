@@ -67,7 +67,7 @@ int publickeygen(int p, int q){
         return e;
 }
 
-int privatekeygen(e,p,q){
+int privatekeygen(int e, int p, int q){
 
 	int psub = p-1;
 	int qsub = q-1;
@@ -101,9 +101,9 @@ int encrypt(int m, int e, int n){
   	int counter = 0;
         int* result;
         result = power(m,e,&counter);
-        printf("\n");
+        //printf("\n");
         int cnum = modrev(result,counter,n);
-        printf("CipherText in Int Form: %d\n",cnum);
+      //  printf("CipherText in Int Form: %d\n",cnum);
         free(result);
 	return cnum;
 
@@ -115,13 +115,27 @@ int decrypt(int cnum, int d, int n){
         int counter2 = 0;
         result2 = power(cnum,d,&counter2);
         int m = modrev(result2,counter2,n);
-        printf("\nMessage Decrypted = %d",m);
+    //    printf("\nMessage Decrypted = %d",m);
         free(result2);
 	return m;
 }
 
 
 int main(){
+
+  //TODO: provide filing to read text to be encrypted
+
+
+  //TODO: provide OpenMP parallelism
+
+
+  //TODO: put timing to find where time is taken?
+
+  //TODO: find large interesting text files, preferably Novel etc
+  //      use it to do the final benchmarking and poster presentation
+
+
+  //TODO: Auto-testing to check for correct execution
 
 	int input[] = {65,66,67,68,69,70,71,72};
 	int output[8];
@@ -130,15 +144,14 @@ int main(){
 	char m;
 	int message;
 	int e;
-	for(i = 0; i < 8; i++){
 		
 		p = primegen(70);
-		printf("p = %d\n",p);
+	//	printf("p = %d\n",p);
 		q = primegen(50);
-		printf("q = %d\n",q);
+	//	printf("q = %d\n",q);
 		n = p * q;
-		m = 'H';
-		message = (int)m;
+		//m = 'H';
+		//message = (int)m;
 		e = publickeygen(p,q);
 	/*
 	int counter = 0;
@@ -149,14 +162,20 @@ int main(){
 	printf("CipherText in Int Form: %d\n",cnum);
 	free(result);
 	*/
+
+  for(i = 0; i < 8; i++){
+
 		cnum = encrypt(input[i],e,n);
 		output[i] = cnum;
+
+    printf("Encryption of %d is %d\n", input[i], output[i]); 
+
 	}
 	/*int* result2;
 	int counter2 = 0;*/
 	int tem = (p-1)*(q-1);
 	int d = modInverse(e,tem);
-	printf("\n\n\n%d",d);	
+	//printf("\n\n\n%d",d);	
 
 	for(i =0; i < 8; i++){
 	/*result2 = power(cnum,d,&counter2);
@@ -165,9 +184,13 @@ int main(){
 	free(result2);*/
 		cnum = output[i];
 		int tempor = decrypt(cnum,d,n);
-		printf("%d",tempor);
+		//printf("%d",tempor);
+    printf("Decryption of %d is %d\n", output[i], tempor);
 
 	}
+
+
+
 	return 0;
 
 

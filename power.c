@@ -72,7 +72,7 @@ int i;
 for (i = 2; i <= n; i++)
     res_size = multiply(x, res, res_size);
 
-printf("%d ^ %d = ",x,n);
+//printf("%d ^ %d = ",x,n);
 
 /*
 for (int i = res_size - 1; i >= 0; i--)
