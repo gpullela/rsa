@@ -124,7 +124,7 @@ int decrypt(int cnum, int d, int n){
 }
 
 
-int main(){
+int main(int argv, char** argc){
 
   //TODO: provide filing to read text to be encrypted
 
@@ -150,12 +150,14 @@ struct timeval begin, end;
 gettimeofday(&begin, 0);
 //compute 
 
-
-  #define INPUT_SIZE 1000
+  char ch, file_name[25];
+  FILE *fp;
+  int input_size = 0;
 
 	//int input[] = {65,66,67,68,69,70,71,72};
-  int input[INPUT_SIZE];
-	int output[INPUT_SIZE];
+  int input[MAX];
+	int output[MAX];
+  int decrypted_output[MAX];
 
 
 	int i = 0;
@@ -165,15 +167,14 @@ gettimeofday(&begin, 0);
 	int e;
 
   // read from file....
- 
-  for(i=0;i<INPUT_SIZE;i++){
-   
-   input[i] = i %128;
- 
+  fp = fopen(argc[1], "r"); // read mode
+  while((ch = fgetc(fp)) != EOF){
+     input[input_size] = (int) ch;
+     input_size++; 
   }
-	
-  
-	
+
+	fclose(fp);
+
 		p = primegen(70);
 	//	printf("p = %d\n",p);
 		q = primegen(50);
@@ -195,12 +196,12 @@ gettimeofday(&begin, 0);
   printf("starting encryption\n");
  
   #pragma omp parallel for
-  for(i = 0; i < INPUT_SIZE; i++){
+  for(i = 0; i < input_size; i++){
 
 		int cnum = encrypt(input[i],e,n);
 		output[i] = cnum;
-
-    //printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
+    
+    printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
 
 	}
 	/*int* result2;
@@ -211,18 +212,22 @@ gettimeofday(&begin, 0);
 
   printf("starting decryp\n");
   #pragma omp parallel for
-	for(i =0; i < INPUT_SIZE; i++){
+	for(i =0; i < input_size; i++){
 	/*result2 = power(cnum,d,&counter2);
 	message = modrev(result2,counter2,n);
 	printf("\nMessage Decrypted = %d",(char)message);
 	free(result2);*/
 		int cnum = output[i];
 		int tempor = decrypt(cnum,d,n);
+    decrypted_output[i] = tempor;
 		//printf("%d",tempor);
-    //printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
+    printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
    if(input[i] != tempor)
     printf("ERROR at ieration %d\n",i);
 	}
+
+
+  
 
 // timing
 //TOC
@@ -231,6 +236,18 @@ gettimeofday(&begin, 0);
               ((end.tv_usec - begin.tv_usec)/1000000.0);
 
   printf("Time taken secs: %lf\n", elapsed);
+
+
+
+
+  for(i=0;i<input_size;i++){
+    printf("%c", decrypted_output[i]);
+  }
+
+  printf("\n");
+
+
+
 
 
 	return 0;

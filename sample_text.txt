@@ -1,0 +1,3 @@
+This is a sameple text to be encrypted!
+A new file with a tab    and spaces in between
+Some strange characters = $%^ !!!!! @#$% :"PO;;;
