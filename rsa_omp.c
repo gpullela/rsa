@@ -144,7 +144,7 @@ int main(int argv, char** argc){
 struct timeval begin, end;
 
 //struct timeval affine_begin, affine_end;
-
+struct timeval affst,affend;
 
 //TIC
 gettimeofday(&begin, 0);
@@ -174,7 +174,8 @@ gettimeofday(&begin, 0);
   }
 
 	fclose(fp);
-
+		
+		gettimeofday(&affst, 0);	
 		p = primegen(70);
 	//	printf("p = %d\n",p);
 		q = primegen(50);
@@ -183,6 +184,10 @@ gettimeofday(&begin, 0);
 		//m = 'H';
 		//message = (int)m;
 		e = publickeygen(p,q);
+		int tem = (p-1)*(q-1);
+	        int d = modInverse(e,tem);
+		gettimeofday(&affend, 0);
+
 	/*
 	int counter = 0;
 	int* result;
@@ -206,8 +211,6 @@ gettimeofday(&begin, 0);
 	}
 	/*int* result2;
 	int counter2 = 0;*/
-	int tem = (p-1)*(q-1);
-	int d = modInverse(e,tem);
 	//printf("\n\n\n%d",d);	
 
   printf("starting decryp\n");
@@ -227,18 +230,19 @@ gettimeofday(&begin, 0);
 	}
 
 
-  
-
 // timing
 //TOC
   gettimeofday(&end, 0);
-  double elapsed = (end.tv_sec - begin.tv_sec) +
+ 
+	double affelaps = (affend.tv_sec - affst.tv_sec) + ((affend.tv_usec - affst.tv_usec) / 1000000.0); 
+	double elapsed = (end.tv_sec - begin.tv_sec) +
               ((end.tv_usec - begin.tv_usec)/1000000.0);
-
+  printf("Time taken for affine casts in secs: %lf\n", affelaps);
   printf("Time taken secs: %lf\n", elapsed);
 
 
-
+	
+printf("\n\n");
 
   for(i=0;i<input_size;i++){
     printf("%c", decrypted_output[i]);
