@@ -6,8 +6,8 @@
 #include <omp.h>
 #include <sys/time.h>
 
+#define DEBUG 0
 #define MAX 10000
-
 int isprime(int input){
         if(input == 2){
                 return input;
@@ -118,8 +118,10 @@ int decrypt(int cnum, int d, int n){
         int counter2 = 0;
         result2 = power(cnum,d,&counter2);
         int m = modrev(result2,counter2,n);
-    //    printf("\nMessage Decrypted = %d",m);
-        free(result2);
+    //   if(DEBUG){ 
+		printf("\nMessage Decrypted = %d",m);
+       } 
+	free(result2);
 	return m;
 }
 
