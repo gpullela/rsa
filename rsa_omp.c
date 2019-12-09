@@ -118,7 +118,7 @@ int decrypt(int cnum, int d, int n){
         int counter2 = 0;
         result2 = power(cnum,d,&counter2);
         int m = modrev(result2,counter2,n);
-    //   if(DEBUG){ 
+       if(DEBUG){ 
 		printf("\nMessage Decrypted = %d",m);
        } 
 	free(result2);
@@ -147,11 +147,14 @@ struct timeval begin, end;
 
 //struct timeval affine_begin, affine_end;
 struct timeval affst,affend;
+struct timeval encrypst, encrypend;
+struct timeval decrypst, decrypend;
+struct timeval filst, filend;
 
 //TIC
 gettimeofday(&begin, 0);
 //compute 
-
+gettimeofday(&filst,0);
   char ch, file_name[25];
   FILE *fp;
   int input_size = 0;
@@ -176,7 +179,8 @@ gettimeofday(&begin, 0);
   }
 
 	fclose(fp);
-		
+gettimeofday(&filend,0);
+				
 		gettimeofday(&affst, 0);	
 		p = primegen(70);
 	//	printf("p = %d\n",p);
@@ -200,20 +204,25 @@ gettimeofday(&begin, 0);
 	free(result);
 	*/
   
+
+  gettimeofday(&encrypst,0); //encryption start time recorded
+
   printf("starting encryption\n");
- 
   #pragma omp parallel for
   for(i = 0; i < input_size; i++){
 
 		int cnum = encrypt(input[i],e,n);
 		output[i] = cnum;
-    
-    printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
-
-	}
+    if(DEBUG){
+    	printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
+    }
+  }
 	/*int* result2;
 	int counter2 = 0;*/
 	//printf("\n\n\n%d",d);	
+  gettimeofday(&encrypend,0);
+
+  gettimeofday(&decrypst,0); //decryption time start
 
   printf("starting decryp\n");
   #pragma omp parallel for
@@ -226,12 +235,14 @@ gettimeofday(&begin, 0);
 		int tempor = decrypt(cnum,d,n);
     decrypted_output[i] = tempor;
 		//printf("%d",tempor);
-    printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
+    if(DEBUG){
+	printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
+    }
    if(input[i] != tempor)
     printf("ERROR at ieration %d\n",i);
 	}
 
-
+  gettimeofday(&decrypend,0);
 // timing
 //TOC
   gettimeofday(&end, 0);
@@ -239,19 +250,30 @@ gettimeofday(&begin, 0);
 	double affelaps = (affend.tv_sec - affst.tv_sec) + ((affend.tv_usec - affst.tv_usec) / 1000000.0); 
 	double elapsed = (end.tv_sec - begin.tv_sec) +
               ((end.tv_usec - begin.tv_usec)/1000000.0);
-  printf("Time taken for affine casts in secs: %lf\n", affelaps);
-  printf("Time taken secs: %lf\n", elapsed);
+	double encrypelapsed = (encrypend.tv_sec - encrypst.tv_sec) + ((encrypend.tv_usec - encrypst.tv_usec) / 1000000.0);
+	double decrypelapsed = (decrypend.tv_sec - decrypst.tv_sec) + ((decrypend.tv_usec - decrypst.tv_usec) / 1000000.0);
+	double filingelapsed = (filend.tv_sec - filst.tv_sec) + ((filend.tv_usec - filst.tv_usec) / 1000000.0);
+	
+	int num_threads = omp_get_num_threads();
+	
+	printf("Threads\tFiling\tAffine\tEncrypt\tDecrypt\tTotal\n");
+
+	printf("%d\t%lg\t%lg\t%lg\t%lg\t%lg",num_threads,filingelapsed,affelaps,encrypelapsed,decrypelapsed,elapsed);
+
+	
+
+
 
 
 	
 printf("\n\n");
-
+if(DEBUG){
   for(i=0;i<input_size;i++){
     printf("%c", decrypted_output[i]);
   }
 
   printf("\n");
-
+}
 
 
 
