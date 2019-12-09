@@ -209,14 +209,13 @@ gettimeofday(&filend,0);
 
   printf("starting encryption\n");
   #pragma omp parallel for
-  for(i = 0; i < input_size; i++){
-
+  	for(i = 0; i < input_size; i++){
 		int cnum = encrypt(input[i],e,n);
 		output[i] = cnum;
-    if(DEBUG){
-    	printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
-    }
-  }
+    		if(DEBUG){
+    			printf("TID: %d. Encryption of %d is %d\n", omp_get_thread_num(), input[i], output[i]); 
+    		}
+  	}
 	/*int* result2;
 	int counter2 = 0;*/
 	//printf("\n\n\n%d",d);	
@@ -233,13 +232,13 @@ gettimeofday(&filend,0);
 	free(result2);*/
 		int cnum = output[i];
 		int tempor = decrypt(cnum,d,n);
-    decrypted_output[i] = tempor;
+    		decrypted_output[i] = tempor;
 		//printf("%d",tempor);
-    if(DEBUG){
-	printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
-    }
-   if(input[i] != tempor)
-    printf("ERROR at ieration %d\n",i);
+    	if(DEBUG){
+		printf("TID: %d. Decryption of %d is %d\n", omp_get_thread_num(), output[i], tempor);
+    	}		
+   	if(input[i] != tempor)
+    		printf("ERROR at ieration %d\n",i);
 	}
 
   gettimeofday(&decrypend,0);
