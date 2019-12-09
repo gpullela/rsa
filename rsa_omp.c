@@ -252,12 +252,14 @@ gettimeofday(&filend,0);
 	double encrypelapsed = (encrypend.tv_sec - encrypst.tv_sec) + ((encrypend.tv_usec - encrypst.tv_usec) / 1000000.0);
 	double decrypelapsed = (decrypend.tv_sec - decrypst.tv_sec) + ((decrypend.tv_usec - decrypst.tv_usec) / 1000000.0);
 	double filingelapsed = (filend.tv_sec - filst.tv_sec) + ((filend.tv_usec - filst.tv_usec) / 1000000.0);
-	
-	int num_threads = omp_get_num_threads();
-	
-	printf("Threads\tFiling\tAffine\tEncrypt\tDecrypt\tTotal\n");
+	int num_threads;
+        #pragma omp parallel
+	{
+	num_threads = omp_get_num_threads();
+	}
+	printf("Threads\tInputSize\tFiling\tAffine\tEncrypt\tDecrypt\tTotal\n");
 
-	printf("%d\t%lg\t%lg\t%lg\t%lg\t%lg",num_threads,filingelapsed,affelaps,encrypelapsed,decrypelapsed,elapsed);
+	printf("%d\t%d\t%lg\t%lg\t%lg\t%lg\t%lg",num_threads,input_size,filingelapsed,affelaps,encrypelapsed,decrypelapsed,elapsed);
 
 	
 
