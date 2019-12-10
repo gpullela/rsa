@@ -1,0 +1,125 @@
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+1	593	0.002927	2.3e-05	39.2557	65.7268	104.985
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+2	593	8.5e-05	2.2e-05	19.8708	32.9792	52.8502
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+4	593	8.1e-05	2.3e-05	9.96055	16.6403	26.601
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+8	593	8.1e-05	2.3e-05	5.04859	8.44153	13.4902
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+16	593	6.3e-05	2.2e-05	2.57489	4.3327	6.90767
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+1	593	7.7e-05	2.2e-05	39.2667	65.8318	105.099
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+2	593	7.3e-05	2.3e-05	19.8823	32.9979	52.8803
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+4	593	6.6e-05	2.2e-05	9.95826	16.6306	26.589
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+8	593	8.4e-05	2.2e-05	5.0507	8.44155	13.4924
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+16	593	7.9e-05	2.2e-05	2.57287	4.3418	6.91477
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+1	593	7.6e-05	2.2e-05	39.2865	65.7849	105.072
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+2	593	7.5e-05	2.2e-05	19.8397	32.9571	52.7969
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+4	593	8.1e-05	2.2e-05	9.98163	16.6343	26.616
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+8	593	6.9e-05	2.3e-05	5.06499	8.43981	13.5049
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+16	593	7.9e-05	2.2e-05	2.56962	4.33685	6.90657
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+1	593	7.9e-05	2.3e-05	39.3492	65.7623	105.112
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+2	593	7.9e-05	2.3e-05	19.8598	32.9567	52.8166
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+4	593	8.3e-05	2.2e-05	9.9632	16.6356	26.5989
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+8	593	7.7e-05	2.2e-05	5.06545	8.4428	13.5084
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+16	593	6e-05	2.3e-05	2.57273	4.32993	6.90273
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+1	593	6.2e-05	2.3e-05	39.3898	65.7647	105.155
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+2	593	7.9e-05	2.3e-05	19.811	32.9978	52.8089
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+4	593	8.2e-05	2.3e-05	9.97525	16.6345	26.6099
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+8	593	7.4e-05	2.2e-05	5.06524	8.44006	13.5054
+
+starting encryption
+starting decryp
+Threads	InputSize	Filing	Affine	Encrypt	Decrypt	Total
+16	593	7.6e-05	2.3e-05	2.57226	4.33628	6.90864
+
