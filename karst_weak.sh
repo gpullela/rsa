@@ -2,7 +2,6 @@
 #PBS -k o
 #PBS -l nodes=1:ppn=16,walltime=1:00:00
 #PBS -l mem=16GB
-#PBS -M gpullela@iu.edu
 #PBS -m abe
 #PBS -N RSA-HPC
 
