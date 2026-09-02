@@ -1,0 +1,5 @@
+# uv-related
+uv.lock
+
+# Python related
+.python-version

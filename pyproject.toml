@@ -1,0 +1,25 @@
+[project]
+name = "rsa"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gourav Pullela", email = "gourav.pullela@gmail.com" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "black",
+    "mypy",
+    "numba",
+    "numpy",
+    "pyomp",
+    "pytest",
+    "ruff",
+]
+
+[project.scripts]
+rsa = "rsa:main"
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
